@@ -1157,6 +1157,145 @@
   color: var(--hz-faint);
 }
 
+/* Download */
+.hafiz-download {
+  padding: clamp(64px, 9vw, 120px) var(--hz-gutter);
+  max-width: var(--hz-maxw);
+  margin: 0 auto;
+}
+.hafiz-download__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 300px);
+  gap: clamp(28px, 5vw, 60px);
+  align-items: center;
+  padding: clamp(26px, 4vw, 52px);
+  border: 1px solid var(--hz-line);
+  border-radius: var(--hz-rad-lg);
+  background:
+    radial-gradient(120% 130% at 100% 0%, rgba(61, 124, 255, 0.14), transparent 58%),
+    linear-gradient(180deg, var(--hz-card), var(--hz-card2));
+}
+.hafiz-download__cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: 28px;
+}
+.hafiz-download__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid var(--hz-line-soft);
+  font-size: 12px;
+  color: var(--hz-text);
+}
+.hafiz-download__meta li {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.hafiz-download__meta span {
+  color: var(--hz-faint);
+  letter-spacing: 0.16em;
+}
+.hafiz-download__steps {
+  margin-top: 22px;
+  border: 1px solid var(--hz-line);
+  border-radius: var(--hz-rad);
+  background: rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+}
+.hafiz-download__steps summary {
+  cursor: pointer;
+  padding: 14px 18px;
+  font-weight: 600;
+  list-style: none;
+}
+.hafiz-download__steps summary::-webkit-details-marker {
+  display: none;
+}
+.hafiz-download__steps summary::after {
+  content: '+';
+  float: right;
+  color: var(--hz-blue);
+  font-family: var(--hz-font-m);
+  font-weight: 700;
+}
+.hafiz-download__steps[open] summary::after {
+  content: '\2013';
+}
+.hafiz-download__steps ol {
+  display: grid;
+  gap: 10px;
+  padding: 0 18px 18px;
+  counter-reset: hzstep;
+  color: var(--hz-dim);
+}
+.hafiz-download__steps li {
+  position: relative;
+  padding-left: 34px;
+  counter-increment: hzstep;
+}
+.hafiz-download__steps li::before {
+  content: counter(hzstep);
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--hz-blue-soft);
+  color: var(--hz-blue);
+  font-family: var(--hz-font-m);
+  font-size: 11px;
+  font-weight: 700;
+}
+.hafiz-download__hash {
+  margin-top: 22px;
+  font-size: 11px;
+  color: var(--hz-faint);
+  overflow-wrap: anywhere;
+}
+.hafiz-download__hash span {
+  margin-right: 8px;
+  color: var(--hz-dim);
+  letter-spacing: 0.16em;
+}
+.hafiz-download__hash code {
+  font-size: 11px;
+  color: var(--hz-dim);
+}
+.hafiz-download__aside {
+  text-align: center;
+}
+.hafiz-download__qr {
+  display: inline-block;
+  padding: 14px;
+  border-radius: var(--hz-rad);
+  background: #fff;
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.45);
+}
+.hafiz-download__qr img {
+  width: min(220px, 54vw);
+  height: auto;
+}
+.hafiz-download__qr-label {
+  margin-top: 16px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--hz-faint);
+}
+.hafiz-faq__body a {
+  color: var(--hz-blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 /* FAQ */
 .hafiz-faq__list {
   max-width: 820px;
@@ -1320,6 +1459,21 @@
   margin-left: 0;
   margin-right: auto;
 }
+.hafiz-page[dir='rtl'] .hafiz-download__steps li {
+  padding-left: 0;
+  padding-right: 34px;
+}
+.hafiz-page[dir='rtl'] .hafiz-download__steps li::before {
+  left: auto;
+  right: 0;
+}
+.hafiz-page[dir='rtl'] .hafiz-download__steps summary::after {
+  float: left;
+}
+.hafiz-page[dir='rtl'] .hafiz-download__hash span {
+  margin-right: 0;
+  margin-left: 8px;
+}
 
 /* Responsive: 1440 & below */
 @media (max-width: 1440px) {
@@ -1349,6 +1503,9 @@
   }
   .hafiz-hero__device {
     margin-top: 10px;
+  }
+  .hafiz-download__inner {
+    grid-template-columns: minmax(0, 1fr);
   }
   .hafiz-float--a {
     left: 4%;
@@ -1425,6 +1582,13 @@
   }
   .hafiz-hero__chips {
     justify-content: center;
+  }
+  .hafiz-download__cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hafiz-download__cta .hafiz-btn {
+    width: 100%;
   }
   .hafiz-footer__meta {
     flex-direction: column;

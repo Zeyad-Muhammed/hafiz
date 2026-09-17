@@ -6,7 +6,11 @@
   var I18N = {
     en: {
       hero_lede: 'Hafiz is an offline, fully-encrypted password vault for Android. No internet permission, no server, no telemetry — your passwords never leave this device.',
-      hero_cta: 'Coming to Google Play',
+      nav_cta: 'Download',
+      hero_cta: 'Download for Android',
+      free_cta: 'Download free',
+      download_lede: 'Signed release build, direct download. No account, no store, no telemetry — install it and it stays offline.',
+      download_cta: 'Download APK · 77.7 MB',
       vault_lede: 'Everything is encrypted at rest and in memory. What you see here is the real Android app — captured from the release build.',
       features_lede: 'Fourteen features, all local, all private. No feature here depends on a server existing.',
       security_lede: 'Every byte of your vault is protected by the same primitives banks reach for — and nothing you care about ever leaves the device.',
@@ -14,13 +18,17 @@
       duress_lede: 'If you\'re forced to unlock your phone, you don\'t choose between safety and trust — you choose which truth you show.',
       move_lede: 'Your data is not a hostage. Hafiz can import the vaults you already use, and export encrypted backups only you can open.',
       pricing_lede: 'Every security feature is in both plans. The only difference is how many accounts you can keep.',
-      pro_cta: 'Coming to Google Play',
-      final_lede: 'Hafiz is built, tested, and awaiting its spot on Google Play. Join the waitlist and be first to know.',
-      final_cta: 'Join the waitlist'
+      pro_cta: 'Download for Android',
+      final_lede: 'Hafiz is shipping now. Download the signed build, install it on Android, and your vault never touches a server.',
+      final_cta: 'Download for Android'
     },
     ar: {
       hero_lede: 'حافظ هو خزنة كلمات مرور مشفرة بالكامل وتعمل دون اتصال على أندرويد. لا إذن إنترنت، لا خادم، لا تتبع — كلمات مرورك لا تغادر جهازك أبدًا.',
-      hero_cta: 'قريبًا على Google Play',
+      nav_cta: 'تحميل',
+      hero_cta: 'تحميل لأندرويد',
+      free_cta: 'حمّل مجانًا',
+      download_lede: 'إصدار موقَّع بتحميل مباشر. بلا حساب، بلا متجر، بلا تتبع — ثبّته وسيبقى دون اتصال.',
+      download_cta: 'تحميل APK · 77.7 ميجابايت',
       vault_lede: 'كل شيء مشفّر عند التخزين وفي الذاكرة. ما تراه هنا هو تطبيق أندرويد الحقيقي — ملتقط من الإصدار النهائي.',
       features_lede: 'أربع عشرة ميزة، كلها محلية وخاصة. لا تعتمد أي ميزة على وجود خادم.',
       security_lede: 'كل بايت في خزنتك محمي بنفس الأدوات التي تستخدمها البنوك — ولا شيء يهمك يغادر جهازك أبدًا.',
@@ -28,9 +36,9 @@
       duress_lede: 'إذا أُجبرت على فتح هاتفك، لا تختار بين الأمان والثقة — بل تختار أي الحقيقتين تُظهر.',
       move_lede: 'بياناتك ليست رهينة. يمكن لحافظ استيراد الخزائن التي تستخدمها بالفعل، وتصدير نسخ احتياطية مشفرة لا تفتحها إلا أنت.',
       pricing_lede: 'كل ميزات الأمان موجودة في الخطتين. الفرق الوحيد هو عدد الحسابات التي يمكنك الاحتفاظ بها.',
-      pro_cta: 'قريبًا على Google Play',
-      final_lede: 'حافظ مكتمل ومُختبَر، بانتظار مكانه على Google Play. انضم للقائمة ليصلك أول خبر.',
-      final_cta: 'انضم للقائمة'
+      pro_cta: 'تحميل لأندرويد',
+      final_lede: 'حافظ متاح الآن. حمّل الإصدار الموقَّع، ثبّته على أندرويد، وخزنتك لن تلمس أي خادم.',
+      final_cta: 'تحميل لأندرويد'
     }
   };
 
