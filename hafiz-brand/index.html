@@ -67,12 +67,13 @@
       <a href="#security">Security</a>
       <a href="#life">Emergency</a>
       <a href="#pricing">Pricing</a>
+      <a href="#download">Download</a>
       <a href="#faq">FAQ</a>
     </nav>
 
     <div class="hafiz-nav__actions">
       <button class="hafiz-lang" id="langToggle" type="button" aria-label="Switch language to Arabic">ع</button>
-      <a class="hafiz-btn hafiz-btn--ghost" href="#pricing">Coming to Google&nbsp;Play</a>
+      <a class="hafiz-btn hafiz-btn--ghost" href="#download" data-i18n="nav_cta">Download</a>
     </div>
   </div>
 </header>
@@ -93,7 +94,7 @@
       </h1>
       <p class="hafiz-hero__lede" data-i18n="hero_lede">Hafiz is an offline, fully-encrypted password vault for Android. No internet permission, no server, no telemetry — your passwords never leave this device.</p>
       <div class="hafiz-hero__cta">
-        <a class="hafiz-btn hafiz-btn--primary" href="#pricing" data-i18n="hero_cta">Coming to Google Play</a>
+        <a class="hafiz-btn hafiz-btn--primary" href="#download" data-i18n="hero_cta">Download for Android</a>
         <a class="hafiz-btn hafiz-btn--text" href="#vault">See the vault <span aria-hidden="true">↓</span></a>
       </div>
       <ul class="hafiz-hero__chips" aria-label="Security highlights">
@@ -458,7 +459,7 @@
         <li class="hafiz-plan__ok">Duress vault</li>
         <li class="hafiz-plan__ok">QR transfer &amp; backup</li>
       </ul>
-      <a class="hafiz-btn hafiz-btn--outline" href="#" aria-disabled="true">Coming to Google Play</a>
+      <a class="hafiz-btn hafiz-btn--outline" href="#download" data-i18n="free_cta">Download free</a>
     </article>
 
     <article class="hafiz-plan hafiz-plan--pro" aria-label="Pro plan">
@@ -473,10 +474,58 @@
         <li class="hafiz-plan__ok">Priority support</li>
         <li class="hafiz-plan__ok">Funds the product's future</li>
       </ul>
-      <a class="hafiz-btn hafiz-btn--primary" href="#" aria-disabled="true" data-i18n="pro_cta">Coming to Google Play</a>
+      <a class="hafiz-btn hafiz-btn--primary" href="#download" data-i18n="pro_cta">Download for Android</a>
     </article>
   </div>
-  <p class="hafiz-pricing__note mono">BILLING IS NOT LIVE YET — NOVU SHIPS HAFIZ ON GOOGLE PLAY SOON.</p>
+  <p class="hafiz-pricing__note mono">BILLING IS NOT LIVE YET — DOWNLOAD THE DIRECT BUILD. GOOGLE PLAY COMING SOON.</p>
+</section>
+
+<!-- ═════════════════ 13 · DOWNLOAD ═════════════════ -->
+<section class="hafiz-download" id="download" aria-labelledby="download-title">
+  <div class="hafiz-download__inner">
+    <div class="hafiz-download__copy">
+      <p class="hafiz-eyebrow">DOWNLOAD</p>
+      <h2 class="hafiz-h2" id="download-title">Get Hafiz for Android<span class="hafiz-dot">.</span></h2>
+      <p class="hafiz-lede" data-i18n="download_lede">Signed release build, direct download. No account, no store, no telemetry — install it and it stays offline.</p>
+
+      <div class="hafiz-download__cta">
+        <a class="hafiz-btn hafiz-btn--primary hafiz-btn--lg"
+           href="https://github.com/Zeyad-Muhammed/hafiz/releases/download/v1.2.0/Hafiz.apk"
+           download data-i18n="download_cta">Download APK · 77.7 MB</a>
+        <a class="hafiz-btn hafiz-btn--text"
+           href="https://github.com/Zeyad-Muhammed/hafiz/releases/tag/v1.2.0"
+           rel="noopener">Release notes <span aria-hidden="true">↗</span></a>
+      </div>
+
+      <ul class="hafiz-download__meta mono">
+        <li><span>VERSION</span> 1.2.0 · build 3</li>
+        <li><span>SIZE</span> 77.7 MB</li>
+        <li><span>PLATFORM</span> Android</li>
+      </ul>
+
+      <details class="hafiz-download__steps">
+        <summary>How to install</summary>
+        <ol>
+          <li>Open this page on your Android phone and tap <strong>Download APK</strong>.</li>
+          <li>If Android asks, allow installing from this source (<em>unknown sources</em>).</li>
+          <li>Open the downloaded file and tap <strong>Install</strong>.</li>
+          <li>Launch Hafiz and set your master password — it never leaves the device.</li>
+        </ol>
+      </details>
+
+      <p class="hafiz-download__hash">
+        <span class="mono">SHA-256</span>
+        <code class="mono">71315AA046BF30A36A692CD99EE92F35D97A4A4229F0DDBAFB97B2A90798B54A</code>
+      </p>
+    </div>
+
+    <aside class="hafiz-download__aside" aria-label="Scan to download on your phone">
+      <div class="hafiz-download__qr">
+        <img src="assets/img/download-qr.svg" alt="QR code linking to the Hafiz APK download" width="220" height="220" loading="lazy" />
+      </div>
+      <p class="hafiz-download__qr-label mono">SCAN TO INSTALL ON YOUR PHONE</p>
+    </aside>
+  </div>
 </section>
 
 <!-- ═════════════════ 13 · FAQ ═════════════════ -->
@@ -490,6 +539,10 @@
     <details class="hafiz-faq__item" open>
       <summary>Is the vault really offline? How can that be?</summary>
       <div class="hafiz-faq__body"><p>The Android release declares <strong>no INTERNET permission</strong>. Without that permission Android blocks all network access at the system level, so the app physically cannot send your data — there's no sync server, no account, and no recovery email to abuse.</p></div>
+    </details>
+    <details class="hafiz-faq__item">
+      <summary>How do I install Hafiz without Google Play?</summary>
+      <div class="hafiz-faq__body"><p>Download the signed APK from the <a href="#download">download section</a>, allow installation from this source when Android asks, and install. It's our direct version 1.2.0 build, and you can verify it against the published SHA-256. A Google Play release is coming.</p></div>
     </details>
     <details class="hafiz-faq__item">
       <summary>What happens if I forget my master password?</summary>
@@ -523,9 +576,9 @@
   <div class="hafiz-final__inner">
     <p class="hafiz-eyebrow hafiz-eyebrow--center">YOUR KEYS STAY YOURS</p>
     <h2 class="hafiz-h2 hafiz-h2--center" id="final-title">Ready when you are<span class="hafiz-dot">.</span></h2>
-    <p class="hafiz-lede" data-i18n="final_lede">Hafiz is built, tested, and awaiting its spot on Google Play. Join the waitlist and be first to know.</p>
+    <p class="hafiz-lede" data-i18n="final_lede">Hafiz is shipping now. Download the signed build, install it on Android, and your vault never touches a server.</p>
     <div class="hafiz-final__cta">
-      <a class="hafiz-btn hafiz-btn--primary hafiz-btn--lg" href="mailto:hey@novu.dev?subject=Hafiz%20Waitlist" data-i18n="final_cta">Join the waitlist</a>
+      <a class="hafiz-btn hafiz-btn--primary hafiz-btn--lg" href="#download" data-i18n="final_cta">Download for Android</a>
       <span class="hafiz-final__hint mono">VERSION 1.2.0 · ANDROID</span>
     </div>
   </div>
@@ -546,6 +599,7 @@
       <a href="#security">Security</a>
       <a href="#life">Emergency</a>
       <a href="#pricing">Pricing</a>
+      <a href="#download">Download</a>
       <a href="#faq">FAQ</a>
     </nav>
     <div class="hafiz-footer__meta mono">
