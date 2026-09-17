@@ -1,0 +1,8 @@
+faster-whisper
+coqui-tts
+sounddevice
+numpy
+soundfile
+requests
+flask
+imageio-ffmpeg

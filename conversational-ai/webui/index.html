@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Local Conversational AI</title>
+<style>
+  :root { --bg:#0f1115; --card:#1a1d24; --accent:#4f8cff; --text:#e6e8ee; --muted:#8b90a0; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:"Segoe UI",system-ui,sans-serif; background:var(--bg); color:var(--text); height:100vh; display:flex; flex-direction:column; }
+  header { padding:14px 20px; background:var(--card); border-bottom:1px solid #262b36; display:flex; gap:10px; align-items:center; }
+  header h1 { font-size:16px; margin:0; font-weight:600; }
+  #status { margin-left:auto; font-size:12px; color:var(--muted); }
+  #dot { width:9px; height:9px; border-radius:50%; background:#5adb6a; display:inline-block; margin-right:6px; }
+  #conv { flex:1; overflow-y:auto; padding:20px; display:flex; flex-direction:column; gap:12px; max-width:820px; width:100%; margin:0 auto; }
+  .bubble { max-width:72%; padding:10px 14px; border-radius:14px; font-size:14px; line-height:1.45; white-space:pre-wrap; word-wrap:break-word; }
+  .user { align-self:flex-end; background:var(--accent); color:#fff; border-bottom-right-radius:4px; }
+  .bot { align-self:flex-start; background:var(--card); border:1px solid #2a3140; border-bottom-left-radius:4px; }
+  .meta { font-size:11px; color:var(--muted); margin-bottom:4px; }
+  footer { padding:14px 20px; background:var(--card); border-top:1px solid #262b36; display:flex; gap:10px; align-items:center; max-width:860px; width:100%; margin:0 auto; }
+  input[type=text] { flex:1; background:#12151b; border:1px solid #2a3140; color:var(--text); padding:11px 14px; border-radius:10px; font-size:14px; outline:none; }
+  input[type=text]:focus { border-color:var(--accent); }
+  button { background:var(--accent); color:#fff; border:0; padding:11px 16px; border-radius:10px; font-size:14px; cursor:pointer; font-weight:600; }
+  button:disabled { opacity:.5; cursor:not-allowed; }
+  #talk { background:#23b26d; }
+  #talk.recording { background:#e0483e; animation:pulse 1s infinite; }
+  @keyframes pulse { 50% { transform:scale(1.06);} }
+  .typing::after { content:" ▍"; animation:blink 1s steps(1) infinite; color:var(--accent); }
+  @keyframes blink { 50% { opacity:0; } }
+  #hint { font-size:12px; color:var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Local Conversational AI</h1>
+  <div id="status"><span id="dot"></span><span id="statustxt">connecting…</span></div>
+</header>
+<div id="conv"></div>
+<footer>
+  <input id="text" type="text" placeholder="Type a message, or hold the mic button and speak…" autocomplete="off">
+  <button id="send">Send</button>
+  <button id="talk">🎤 Talk</button>
+</footer>
+<audio id="player" hidden></audio>
+<script>
+const conv = document.getElementById('conv'), statusTxt = document.getElementById('statustxt'),
+      dot = document.getElementById('dot'), input = document.getElementById('text'),
+      btnSend = document.getElementById('send'), btnTalk = document.getElementById('talk'),
+      player = document.getElementById('player');
+
+function addBubble(who, text, meta='') {
+  const d = document.createElement('div');
+  d.className = 'bubble ' + who;
+  if (meta) { const m = document.createElement('div'); m.className='meta'; m.textContent=meta; d.appendChild(m); }
+  if (who==='bot' && text === '') { d.classList.add('typing'); d.textContent='thinking'; }
+  d.appendChild(document.createTextNode(text));
+  conv.appendChild(d);
+  conv.scrollTop = conv.scrollHeight;
+  return d;
+}
+function setStatus(txt, ok) { statusTxt.textContent = txt; dot.style.background = ok ? '#5adb6a' : '#e0b348'; }
+
+async function health() {
+  try { const r = await fetch('/api/health'); const j = await r.json();
+    setStatus(j.llm ? 'LLM online' : 'LLM offline', j.llm); }
+  catch { setStatus('server unreachable', false); }
+}
+
+async function doTurn(payload) {
+  setStatus('working…', true);
+  const t0 = performance.now();
+  const r = await fetch('/api/turn', { method:'POST', body: payload });
+  const j = await r.json();
+  const userTxt = j.user_text || payload.get('text') || '';
+  addBubble('user', userTxt, 'you · ~' + Math.round((performance.now()-t0)/1000) + 's');
+  const b = addBubble('bot', '', 'assistant');
+  b.textContent = '┊';
+  setTimeout(() => { b.textContent = j.reply || '(no reply)'; b.classList.remove('typing'); conv.scrollTop = conv.scrollHeight; }, 50);
+  if (j.audio_url) { player.src = '/audio/' + j.audio_url; player.play().catch(()=>{}); }
+  setStatus('ready', true);
+  health();
+}
+
+btnSend.onclick = () => {
+  const t = input.value.trim(); if (!t) return;
+  input.value = '';
+  const fd = new FormData(); fd.append('text', t);
+  doTurn(fd);
+};
+input.addEventListener('keydown', e => { if (e.key === 'Enter') btnSend.click(); });
+
+let mediaRec=null, chunks=[];
+btnTalk.addEventListener('mousedown', startRec);
+btnTalk.addEventListener('mouseup', stopRec);
+btnTalk.addEventListener('touchstart', e => { e.preventDefault(); startRec(); });
+btnTalk.addEventListener('touchend', stopRec);
+btnTalk.addEventListener('touchcancel', stopRec);
+
+async function startRec() {
+  if (!navigator.mediaDevices) { alert('Microphone not available'); return; }
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    mediaRec = new MediaRecorder(stream, { mimeType: 'audio/webm' });
+    chunks = [];
+    mediaRec.ondataavailable = e => { if (e.data.size) chunks.push(e.data); };
+    mediaRec.start();
+    btnTalk.classList.add('recording'); btnTalk.textContent = '🔴 Listening';
+  } catch (err) { setStatus('mic error', false); }
+}
+function stopRec() {
+  if (!mediaRec || mediaRec.state === 'inactive') return;
+  mediaRec.onstop = async () => {
+    btnTalk.classList.remove('recording'); btnTalk.textContent = '🎤 Talk';
+    mediaRec.stream.getTracks().forEach(t => t.stop());
+    const fd = new FormData();
+    fd.append('audio', new Blob(chunks, { type: 'audio/webm' }), 'clip.webm');
+    await doTurn(fd);
+  };
+  mediaRec.stop();
+  setStatus('transcribing…', true);
+}
+
+health();
+setInterval(health, 10000);
+</script>
+</body>
+</html>

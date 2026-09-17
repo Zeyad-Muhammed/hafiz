@@ -1,0 +1,39 @@
+# ============================================================
+#  Large / generated / environment artifacts — NOT source
+# ============================================================
+
+# --- conversational-ai: downloaded binaries & env (kept out of git) ---
+conversational-ai/venv/
+conversational-ai/logs/
+conversational-ai/models/
+conversational-ai/tools/
+conversational-ai/*.log
+conversational-ai/*.pid
+conversational-ai/**/__pycache__/
+conversational-ai/**/*.pyc
+
+# --- Flutter / Dart build output ---
+itisam/.dart_tool/
+itisam/build/
+itisam/.idea/
+itisam/.flutter-plugins-dependencies
+itisam/android/app/debug/
+itisam/android/app/profile/
+itisam/android/app/release/
+**/coverage/
+**/doc/api/
+
+# --- compiled / object files ---
+*.obj
+*.class
+
+# --- large model / archive / driver blobs anywhere ---
+*.gguf
+*.onnx
+*.safetensors
+
+# --- OS / editor cruft ---
+.DS_Store
+Thumbs.db
+*.swp
+*~
