@@ -10,9 +10,16 @@ The Hafiz product page is published with GitHub Pages:
 
 **https://zeyad-muhammed.github.io/hafiz/**
 
-Source for that page lives in [`hafiz-brand/`](hafiz-brand/).
-The deploy runs from [`.github/workflows/pages.yml`](.github/workflows/pages.yml)
-on every push to `master` (it uploads the `hafiz-brand` folder as the Pages artifact).
+Source for that page lives in [`hafiz-brand/`](hafiz-brand/) on `master`.
+GitHub Pages serves the **`gh-pages`** branch, whose root contains only the
+published site (a `git subtree split` of `hafiz-brand/`).
+
+To publish updates after editing `hafiz-brand/` on `master`:
+
+```bash
+git subtree split --prefix=hafiz-brand -b gh-pages --force
+git push origin gh-pages --force
+```
 
 ## Repository layout
 
