@@ -17,7 +17,8 @@ published site (a `git subtree split` of `hafiz-brand/`).
 To publish updates after editing `hafiz-brand/` on `master`:
 
 ```bash
-git subtree split --prefix=hafiz-brand -b gh-pages --force
+git branch -D gh-pages
+git subtree split --prefix=hafiz-brand -b gh-pages
 git push origin gh-pages --force
 ```
 
