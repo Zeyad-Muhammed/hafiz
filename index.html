@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hafiz — Offline Encrypted Password Vault | NOVU</title>
+<meta name="description" content="Hafiz — an offline, fully-encrypted password vault for Android. Zero internet permission. AES-256-GCM at rest, PBKDF2-HMAC-SHA256 100,000 rounds, your key only ever lives in memory." />
+<meta name="keywords" content="password manager, offline vault, encrypted passwords, AES-256-GCM, PBKDF2, Android autofill, Hafiz, NOVU" />
+<meta name="theme-color" content="#070B12" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Hafiz — Offline Encrypted Password Vault | NOVU" />
+<meta property="og:description" content="Your keys stay yours. A password vault with zero internet permission — encrypted at rest, sealed in memory, free up to 25 accounts." />
+<meta property="og:image" content="assets/screens/03_home.png" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="ar_EG" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="og:site_name" content="NOVU — Hafiz" />
+<link rel="icon" type="image/svg+xml" href="assets/img/icon-app.svg" />
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/spacegrotesk-700-latin.woff2" crossorigin />
+<link rel="stylesheet" href="css/fonts.css" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="hafiz-page">
+
+<a class="hafiz-skip" href="#main">Skip to content</a>
+
+<!-- ═════════════════ 00 · NAV ═════════════════ -->
+<header class="hafiz-nav" id="top">
+  <div class="hafiz-nav__inner">
+    <a class="hafiz-nav__brand" href="#top" aria-label="Hafiz — back to top">
+      <img src="assets/img/icon-app.svg" alt="" class="hafiz-nav__mark" />
+      <span class="hafiz-nav__word">HAFIZ<em>.</em></span>
+    </a>
+
+    <!--
+      NOVU integration point:
+      On the main NOVU site this page sits under Products -> Hafiz.
+      Sibling product links are rendered as non-links here because the other
+      product pages are not part of this workspace. Wire them to their real
+      URLs when integrating.
+    -->
+    <div class="hafiz-products">
+      <button class="hafiz-products__btn" id="productsBtn" type="button"
+              aria-haspopup="true" aria-expanded="false" aria-controls="productsMenu">
+        Products
+        <span class="hafiz-products__caret" aria-hidden="true">&#9662;</span>
+      </button>
+      <div class="hafiz-products__menu" id="productsMenu" role="menu" hidden>
+        <a class="hafiz-products__item hafiz-products__item--current" href="#top" role="menuitem" aria-current="page">
+          <span class="hafiz-products__name">Hafiz</span>
+          <span class="hafiz-products__desc">Offline encrypted vault</span>
+        </a>
+        <span class="hafiz-products__item hafiz-products__item--muted" role="menuitem" aria-disabled="true">
+          <span class="hafiz-products__name">HabitFlow</span>
+          <span class="hafiz-products__desc">On the NOVU site</span>
+        </span>
+        <span class="hafiz-products__item hafiz-products__item--muted" role="menuitem" aria-disabled="true">
+          <span class="hafiz-products__name">Etisam</span>
+          <span class="hafiz-products__desc">On the NOVU site</span>
+        </span>
+      </div>
+    </div>
+
+    <nav class="hafiz-nav__links" aria-label="Primary">
+      <a href="#vault">Vault</a>
+      <a href="#features">Features</a>
+      <a href="#security">Security</a>
+      <a href="#life">Emergency</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <div class="hafiz-nav__actions">
+      <button class="hafiz-lang" id="langToggle" type="button" aria-label="Switch language to Arabic">ع</button>
+      <a class="hafiz-btn hafiz-btn--ghost" href="#pricing">Coming to Google&nbsp;Play</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ═════════════════ 01 · HERO ═════════════════ -->
+<section class="hafiz-hero" aria-labelledby="hero-title">
+  <div class="hafiz-hero__bg" aria-hidden="true"></div>
+  <div class="hafiz-hero__grid" aria-hidden="true"></div>
+
+  <div class="hafiz-hero__inner">
+    <div class="hafiz-hero__copy">
+      <p class="hafiz-eyebrow"><span class="hafiz-eyebrow__dot"></span> N O V U · PRODUCT</p>
+      <h1 class="hafiz-hero__title" id="hero-title">
+        Your keys<br />
+        <span class="hafiz-hero__accent">stay yours<span class="hafiz-dot">.</span></span>
+      </h1>
+      <p class="hafiz-hero__lede" data-i18n="hero_lede">Hafiz is an offline, fully-encrypted password vault for Android. No internet permission, no server, no telemetry — your passwords never leave this device.</p>
+      <div class="hafiz-hero__cta">
+        <a class="hafiz-btn hafiz-btn--primary" href="#pricing" data-i18n="hero_cta">Coming to Google Play</a>
+        <a class="hafiz-btn hafiz-btn--text" href="#vault">See the vault <span aria-hidden="true">↓</span></a>
+      </div>
+      <ul class="hafiz-hero__chips" aria-label="Security highlights">
+        <li><span>AES-256-GCM</span></li>
+        <li><span>PBKDF2 · 100,000</span></li>
+        <li><span>0 internet permissions</span></li>
+      </ul>
+    </div>
+
+    <div class="hafiz-hero__device">
+      <div class="hafiz-phone hafiz-phone--hero" role="img" aria-label="Screenshot of the Hafiz vault home screen">
+        <div class="hafiz-phone__bezel">
+          <div class="hafiz-phone__notch" aria-hidden="true"></div>
+          <img src="assets/screens/03_home.png" alt="Hafiz vault home screen with saved accounts" width="1080" height="2400" loading="eager" />
+        </div>
+      </div>
+      <div class="hafiz-float hafiz-float--a" aria-hidden="true">
+        <span class="hafiz-float__label">VAULT</span>
+        <span class="hafiz-float__value">ENCRYPTED</span>
+      </div>
+      <div class="hafiz-float hafiz-float--b" aria-hidden="true">
+        <span class="hafiz-float__label">NETWORK</span>
+        <span class="hafiz-float__value">OFFLINE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════ 02 · TICKER ═════════════════ -->
+<div class="hafiz-ticker" aria-hidden="true">
+  <div class="hafiz-ticker__track">
+    <span>OFFLINE</span><i>✦</i>
+    <span>ENCRYPTED</span><i>✦</i>
+    <span>AES-256-GCM</span><i>✦</i>
+    <span>NO INTERNET PERMISSION</span><i>✦</i>
+    <span>PBKDF2 · 100,000 ROUNDS</span><i>✦</i>
+    <span>YOUR KEYS STAY YOURS</span><i>✦</i>
+    <span>OFFLINE</span><i>✦</i>
+    <span>ENCRYPTED</span><i>✦</i>
+    <span>AES-256-GCM</span><i>✦</i>
+    <span>NO INTERNET PERMISSION</span><i>✦</i>
+    <span>PBKDF2 · 100,000 ROUNDS</span><i>✦</i>
+    <span>YOUR KEYS STAY YOURS</span><i>✦</i>
+  </div>
+</div>
+
+<!-- ═════════════════ 03 · SECURITY STATS ═════════════════ -->
+<section class="hafiz-stats" aria-label="Security statistics">
+  <div class="hafiz-stats__rank">
+    <div class="hafiz-stats__stat">
+      <span class="hafiz-stats__num mono" data-count="100000" data-format="k">0</span>
+      <span class="hafiz-stats__unit mono">PBKDF2-HMAC-SHA256 ROUNDS</span>
+    </div>
+    <div class="hafiz-stats__stat">
+      <span class="hafiz-stats__num mono" data-count="256">0</span>
+      <span class="hafiz-stats__unit mono">AES-GCM KEY BITS</span>
+    </div>
+    <div class="hafiz-stats__stat">
+      <span class="hafiz-stats__num mono" data-count="16">0</span>
+      <span class="hafiz-stats__unit mono">SALT BYTES · PBKDF2</span>
+    </div>
+    <div class="hafiz-stats__stat">
+      <span class="hafiz-stats__num mono" data-count="12">0</span>
+      <span class="hafiz-stats__unit mono">GCM NONCE BYTES</span>
+    </div>
+    <div class="hafiz-stats__stat">
+      <span class="hafiz-stats__num mono" data-count="0">0</span>
+      <span class="hafiz-stats__unit mono">INTERNET PERMISSIONS</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════ 04 · PROBLEM ═════════════════ -->
+<section class="hafiz-problem" aria-labelledby="problem-title">
+  <div class="hafiz-problem__inner">
+    <p class="hafiz-eyebrow hafiz-eyebrow--center">WHY OFFLINE</p>
+    <h2 class="hafiz-h2 hafiz-h2--center" id="problem-title">Most password managers live in the cloud.<br />Yours doesn't have to<span class="hafiz-dot">.</span></h2>
+    <p class="hafiz-lede">A cloud vault is a target — a server somewhere holding the key to your entire digital life. Hafiz takes the opposite path: the app holds nothing, sends nothing, and knows nothing. It simply opens a vault that lives on your device, and closes it again the moment you look away.</p>
+
+    <div class="hafiz-problem__grid">
+      <article class="hafiz-card hafiz-problem__card">
+        <span class="hafiz-problem__n mono">01</span>
+        <h3>No account, no sync</h3>
+        <p>There is no Hafiz account, no cloud sync, no recovery email, no server-side copy of anything. The concept of "an account" doesn't exist.</p>
+      </article>
+      <article class="hafiz-card hafiz-problem__card">
+        <span class="hafiz-problem__n mono">02</span>
+        <h3>No permission, no leak</h3>
+        <p>The Android build declares no INTERNET permission at all. Not a single byte of your vault can be sent anywhere — it is structurally impossible.</p>
+      </article>
+      <article class="hafiz-card hafiz-problem__card">
+        <span class="hafiz-problem__n mono">03</span>
+        <h3>No key at rest</h3>
+        <p>Your master password becomes a key through 100,000 PBKDF2 rounds. That key exists only in memory, and is wiped the instant the vault locks.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════ 05 · VAULT SHOWCASE ═════════════════ -->
+<section class="hafiz-vault" id="vault" aria-labelledby="vault-title">
+  <div class="hafiz-section__head">
+    <p class="hafiz-eyebrow">THE VAULT</p>
+    <h2 class="hafiz-h2" id="vault-title">A lock that feels like a bank<span class="hafiz-dot">.</span></h2>
+    <p class="hafiz-lede" data-i18n="vault_lede">Everything is encrypted at rest and in transit-to-memory. What you see here is the real Android app — captured from the release build.</p>
+  </div>
+
+  <div class="hafiz-showcase">
+    <div class="hafiz-showcase__grid">
+      <figure class="hafiz-phone">
+        <div class="hafiz-phone__bezel">
+          <div class="hafiz-phone__notch" aria-hidden="true"></div>
+          <img src="assets/screens/03_home.png" alt="Vault home screen listing saved accounts" loading="lazy" />
+        </div>
+        <figcaption class="mono">01 / VAULT HOME</figcaption>
+      </figure>
+      <figure class="hafiz-phone">
+        <div class="hafiz-phone__bezel">
+          <div class="hafiz-phone__notch" aria-hidden="true"></div>
+          <img src="assets/screens/04_account_detail.png" alt="Account detail screen with password reveal and notes" loading="lazy" />
+        </div>
+        <figcaption class="mono">02 / ACCOUNT</figcaption>
+      </figure>
+      <figure class="hafiz-phone">
+        <div class="hafiz-phone__bezel">
+          <div class="hafiz-phone__notch" aria-hidden="true"></div>
+          <img src="assets/screens/15_security_checkup.png" alt="Security checkup with weak password detected" loading="lazy" />
+        </div>
+        <figcaption class="mono">03 / CHECKUP</figcaption>
+      </figure>
+      <figure class="hafiz-phone">
+        <div class="hafiz-phone__bezel">
+          <div class="hafiz-phone__notch" aria-hidden="true"></div>
+          <img src="assets/screens/05_settings.png" alt="Settings screen in Arabic" loading="lazy" />
+        </div>
+        <figcaption class="mono">04 / SETTINGS · AR</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════ 06 · FEATURES ═════════════════ -->
+<section class="hafiz-features" id="features" aria-labelledby="features-title">
+  <div class="hafiz-section__head">
+    <p class="hafiz-eyebrow">SHIPPED</p>
+    <h2 class="hafiz-h2" id="features-title">Everything a vault should be<span class="hafiz-dot">.</span></h2>
+    <p class="hafiz-lede" data-i18n="features_lede">Fourteen features, all local, all private. No feature here depends on a server existing.</p>
+  </div>
+
+  <div class="hafiz-features__grid">
+    <article class="hafiz-feat"><span class="mono hafiz-feat__n">01</span><h3>Biometric Unlock</h3><p>Fingerprint &amp; face unlock while the session lives in memory. Locked the moment it doesn't.</p></article>
+    <article class="hafiz-feat"><span class="mono hafiz-feat__n">02</span><h3>Auto-Lock</h3><p>Background the app and the vault seals instantly. No timeout settings to forget.</p></article>
+    <article class="hafiz-feat"><span class="mono hafiz-feat__n">03</span><h3>Built-in TOTP</h3><p>30-second 2FA codes straight from the vault. Google Authenticator compatible — scan and go.</p></article>
+    <article class="hafiz-feat"><span class="mono hafiz-feat__n">04</span><h3>Native Autofill</h3><p>A real Android autofill service that fills apps and browsers — without ever phoning home.</p></article>
+    <article class="hafiz-feat"><span class="mono hafiz-feat__n">05</span><h3>Strong Generator</h3><p>8–64 characters, passphrases, look-alike letters banned. Randomness that holds.</p></article>
+    <article class="hafiz-feat"><span class="mono hafiz-feat__n">06</span><h3>Security Checkup</h3><p>Scans for weak, reused and stale passwords. Speaks plainly, offers the fix.</p></article>
+    <article class="hafiz-feat"><span class="mono hafiz-feat__n">07</span><h3>QR Transfer</h3><p>Send an account device-to-device through an encrypted, temporary QR payload. No cloud, no cable.</p></article>
+    <article class="hafiz-feat"><span class="mono hafiz-feat__n">08</span><h3>Encrypted Backup</h3><p>Full vault export and restore, sealed with your key. Nothing plaintext ever lands on disk.</p></article>
+    <article class="hafiz-feat"><span class="mono hafiz-feat__n">09</span><h3>CSV Import</h3><p>Bring in Chrome, Bitwarden, LastPass and KeePass exports. Duplicates are skipped automatically.</p></article>
+    <article class="hafiz-feat"><span class="mono hafiz-feat__n">10</span><h3>Duress Vault</h3><p>A plausible decoy behind an emergency keyword. The real vault stays perfectly isolated.</p></article>
+    <article class="hafiz-feat"><span class="mono hafiz-feat__n">11</span><h3>Clipboard Shield</h3><p>Copied passwords vanish from your clipboard 60 seconds after copying.</p></article>
+    <article class="hafiz-feat"><span class="mono hafiz-feat__n">12</span><h3>Screen Shield</h3><p>FLAG_SECURE blocks screenshots and screen casting on the release build.</p></article>
+    <article class="hafiz-feat"><span class="mono hafiz-feat__n">13</span><h3>Bilingual · RTL</h3><p>Arabic and English, with full RTL layouts, plus light, dark and system themes.</p></article>
+    <article class="hafiz-feat"><span class="mono hafiz-feat__n">14</span><h3>Tablet Pages</h3><p>Two-pane layout that keeps your list beside the open account on tablets.</p></article>
+  </div>
+</section>
+
+<!-- ═════════════════ 07 · SECURITY ARCHITECTURE ═════════════════ -->
+<section class="hafiz-security" id="security" aria-labelledby="security-title">
+  <div class="hafiz-security__glow" aria-hidden="true"></div>
+  <div class="hafiz-section__head">
+    <p class="hafiz-eyebrow">SECURITY ARCHITECTURE</p>
+    <h2 class="hafiz-h2" id="security-title">Built like a safe, not a site<span class="hafiz-dot">.</span></h2>
+    <p class="hafiz-lede" data-i18n="security_lede">Every byte of your vault is protected by the same primitives banks reach for — and nothing you care about ever leaves the device.</p>
+  </div>
+
+  <div class="hafiz-security__layout">
+    <div class="hafiz-chain" aria-label="Encryption pipeline: master password to encrypted blob">
+      <div class="hafiz-chain__step">
+        <span class="mono hafiz-chain__n">01</span>
+        <h3>Master password</h3>
+        <p>Your passphrase, combined with a unique 16-byte salt.</p>
+      </div>
+      <span class="hafiz-chain__arrow" aria-hidden="true">→</span>
+      <div class="hafiz-chain__step">
+        <span class="mono hafiz-chain__n">02</span>
+        <h3>PBKDF2-HMAC-SHA256</h3>
+        <p>100,000 rounds derive a 256-bit key in memory.</p>
+      </div>
+      <span class="hafiz-chain__arrow" aria-hidden="true">→</span>
+      <div class="hafiz-chain__step">
+        <span class="mono hafiz-chain__n">03</span>
+        <h3>AES-256-GCM</h3>
+        <p>Authenticated encryption with a fresh 12-byte nonce per blob.</p>
+      </div>
+      <span class="hafiz-chain__arrow" aria-hidden="true">→</span>
+      <div class="hafiz-chain__step">
+        <span class="mono hafiz-chain__n">04</span>
+        <h3>Local encrypted blob</h3>
+        <p>Stored on-device. The key never touches disk.</p>
+      </div>
+    </div>
+
+    <div class="hafiz-terminal mono">
+      <div class="hafiz-terminal__bar">
+        <span></span><span></span><span></span>
+        hafiz --audit --offline --locked
+      </div>
+      <div class="hafiz-terminal__body">
+        <p><span class="hafiz-green">✓</span> network permission <span class="hafiz-k">NONE</span></p>
+        <p><span class="hafiz-green">✓</span> server endpoints <span class="hafiz-k">0</span></p>
+        <p><span class="hafiz-green">✓</span> telemetry / analytics <span class="hafiz-k">BLOCKED</span></p>
+        <p><span class="hafiz-green">✓</span> key derivation <span class="hafiz-k">PBKDF2·SHA256·100K</span></p>
+        <p><span class="hafiz-green">✓</span> payload cipher <span class="hafiz-k">AES-256-GCM</span></p>
+        <p><span class="hafiz-green">✓</span> key residency <span class="hafiz-k">RAM ONLY · WIPED ON LOCK</span></p>
+        <p><span class="hafiz-green">✓</span> screenshots <span class="hafiz-k">FLAG_SECURE</span></p>
+        <p><span class="hafiz-green">✓</span> clipboard <span class="hafiz-k">AUTO-WIPE · 60s</span></p>
+        <p><span class="hafiz-amber">▶</span> exfiltrated bytes <span class="hafiz-k">0.0</span><span class="hafiz-cursor">▊</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════ 08 · EMERGENCY ═════════════════ -->
+<section class="hafiz-life" id="life" aria-labelledby="life-title">
+  <div class="hafiz-section__head">
+    <p class="hafiz-eyebrow">WHEN YOU'RE NOT THERE</p>
+    <h2 class="hafiz-h2" id="life-title">A way in, for the people you trust<span class="hafiz-dot">.</span></h2>
+    <p class="hafiz-lede" data-i18n="life_lede">Emergency access is the most carefully designed part of Hafiz. Someone you trust can unlock your vault after you're gone — completely offline, and only on your terms.</p>
+  </div>
+
+  <div class="hafiz-life__grid">
+    <div class="hafiz-life__copy">
+      <ol class="hafiz-steps">
+        <li><span class="mono">01</span><div><h3>Name a contact</h3><p>Choose the trusted person who should be able to open your vault.</p></div></li>
+        <li><span class="mono">02</span><div><h3>Write your instructions</h3><p>Tell them exactly what to do — in your own words, encrypted with your vault.</p></div></li>
+        <li><span class="mono">03</span><div><h3>They verify offline</h3><p>After a waiting period, your contact generates time-limited codes on their device and unlocks the vault — with no server and no internet.</p></div></li>
+      </ol>
+    </div>
+    <div class="hafiz-showcase hafiz-showcase--life">
+      <div class="hafiz-showcase__grid">
+        <figure class="hafiz-phone">
+          <div class="hafiz-phone__bezel"><div class="hafiz-phone__notch" aria-hidden="true"></div><img src="assets/screens/07_emergency_manage.png" alt="Emergency access management screen" loading="lazy" /></div>
+          <figcaption class="mono">CONTACT</figcaption>
+        </figure>
+        <figure class="hafiz-phone">
+          <div class="hafiz-phone__bezel"><div class="hafiz-phone__notch" aria-hidden="true"></div><img src="assets/screens/08_emergency_code_dialog.png" alt="Time-limited emergency unlock code" loading="lazy" /></div>
+          <figcaption class="mono">CODE</figcaption>
+        </figure>
+        <figure class="hafiz-phone">
+          <div class="hafiz-phone__bezel"><div class="hafiz-phone__notch" aria-hidden="true"></div><img src="assets/screens/10_emergency_inbox.png" alt="Emergency inbox for incoming grants" loading="lazy" /></div>
+          <figcaption class="mono">INBOX</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════ 09 · DURESS ═════════════════ -->
+<section class="hafiz-solo hafiz-duress" aria-labelledby="duress-title">
+  <div class="hafiz-duress__grid">
+    <div class="hafiz-duress__copy">
+      <p class="hafiz-eyebrow">DURESS</p>
+      <h2 class="hafiz-h2" id="duress-title">When the wrong hands push<span class="hafiz-dot">.</span></h2>
+      <p class="hafiz-lede" data-i18n="duress_lede">If you're forced to unlock your phone, you don't choose between safety and trust — you choose which truth you show. A duress password opens a decoy vault that plays the part perfectly, while the real one stays sealed behind a completely separate key.</p>
+      <ul class="hafiz-checks">
+        <li>Separate password, separate key derivation, separate blob</li>
+        <li>The decoy vault looks and behaves like the real thing</li>
+        <li>The real vault is unreachable from the duress path</li>
+      </ul>
+    </div>
+    <figure class="hafiz-phone hafiz-phone--lone">
+      <div class="hafiz-phone__bezel">
+        <div class="hafiz-phone__notch" aria-hidden="true"></div>
+        <img src="assets/screens/12_duress_dialog.png" alt="Duress password setup dialog" loading="lazy" />
+      </div>
+      <figcaption class="mono">DURESS SETUP</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ═════════════════ 10 · TRANSFER ═════════════════ -->
+<section class="hafiz-solo hafiz-move" aria-labelledby="move-title">
+  <div class="hafiz-move__grid">
+    <figure class="hafiz-phone hafiz-phone--lone">
+      <div class="hafiz-phone__bezel">
+        <div class="hafiz-phone__notch" aria-hidden="true"></div>
+        <img src="assets/screens/11_qr_transfer_options.png" alt="QR transfer options — export or import an account" loading="lazy" />
+      </div>
+      <figcaption class="mono">QR TRANSFER</figcaption>
+    </figure>
+    <div class="hafiz-move__copy">
+      <p class="hafiz-eyebrow">MOVE YOUR DATA</p>
+      <h2 class="hafiz-h2" id="move-title">Bring it in. Send it out. Keep it yours<span class="hafiz-dot">.</span></h2>
+      <p class="hafiz-lede" data-i18n="move_lede">Your data is not a hostage. Hafiz can import the vaults you already use, and export encrypted backups only you can open.</p>
+      <ul class="hafiz-move__list">
+        <li><h3>QR account transfer</h3><p>Encrypted, temporary-payload QR codes move a single account between devices — no cable, no cloud.</p></li>
+        <li><h3>Encrypted backup</h3><p>A single file holding your whole vault, sealed with your key. Restore it anywhere Hafiz runs.</p></li>
+        <li><h3>CSV import</h3><p>Chrome, Bitwarden, LastPass and KeePass exports are recognized, with duplicates skipped.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════ 11 · PRIVACY / NIGHT ═════════════════ -->
+<section class="hafiz-solo hafiz-privacy" aria-labelledby="privacy-title">
+  <div class="hafiz-privacy__inner">
+    <p class="hafiz-eyebrow hafiz-eyebrow--center">PRIVACY, PROVABLY</p>
+    <h2 class="hafiz-h2 hafiz-h2--center" id="privacy-title">No claims to trust. Just an audit trail<span class="hafiz-dot">.</span></h2>
+    <p class="hafiz-lede">We don't ask you to take our word for it. The Android release literally cannot make a network request — the permission doesn't exist.</p>
+
+    <div class="hafiz-privacy__cols">
+      <div class="hafiz-card hafiz-privacy__col">
+        <span class="mono hafiz-privacy__k">PERMISSIONS</span>
+        <ul class="hafiz-perms">
+          <li class="hafiz-perm hafiz-perm--off"><span class="hafiz-perm__name">INTERNET</span><span class="hafiz-perm__val">NONE</span></li>
+          <li class="hafiz-perm hafiz-perm--off"><span class="hafiz-perm__name">LOCATION</span><span class="hafiz-perm__val">NONE</span></li>
+          <li class="hafiz-perm hafiz-perm--off"><span class="hafiz-perm__name">CONTACTS</span><span class="hafiz-perm__val">NONE</span></li>
+          <li class="hafiz-perm"><span class="hafiz-perm__name">BIOMETRIC</span><span class="hafiz-perm__val">LOCAL</span></li>
+          <li class="hafiz-perm"><span class="hafiz-perm__name">AUTOFILL</span><span class="hafiz-perm__val">LOCAL</span></li>
+        </ul>
+      </div>
+      <div class="hafiz-card hafiz-privacy__col">
+        <span class="mono hafiz-privacy__k">WHAT'S STORED</span>
+        <ul class="hafiz-what">
+          <li><span class="hafiz-green">✓</span> Encrypted vault blob — on device</li>
+          <li><span class="hafiz-green">✓</span> A local salt for PBKDF2 — on device</li>
+          <li><span class="hafiz-amber">✗</span> Master password — never stored</li>
+          <li><span class="hafiz-amber">✗</span> Derived key — memory only</li>
+          <li><span class="hafiz-amber">✗</span> Recovery email — doesn't exist</li>
+        </ul>
+      </div>
+      <div class="hafiz-card hafiz-privacy__col">
+        <span class="mono hafiz-privacy__k">WHAT LEAVES</span>
+        <p class="hafiz-privacy__zero">Nothing.</p>
+        <p class="hafiz-privacy__note">No telemetry, no analytics, no crash data, no passwords, no metadata. The app has no network permission to spend.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════ 12 · PRICING ═════════════════ -->
+<section class="hafiz-pricing" id="pricing" aria-labelledby="pricing-title">
+  <div class="hafiz-section__head">
+    <p class="hafiz-eyebrow">PRICING</p>
+    <h2 class="hafiz-h2" id="pricing-title">Private first, then Free<span class="hafiz-dot">.</span></h2>
+    <p class="hafiz-lede" data-i18n="pricing_lede">Every security feature is in both plans. The only difference is how many accounts you can keep.</p>
+  </div>
+
+  <div class="hafiz-pricing__grid">
+    <article class="hafiz-plan" aria-label="Free plan">
+      <div class="hafiz-plan__head">
+        <span class="mono hafiz-plan__tag">FREE</span>
+        <p class="hafiz-plan__price">$0<span class="hafiz-plan__per"> forever</span></p>
+      </div>
+      <ul class="hafiz-plan__list">
+        <li class="hafiz-plan__ok">Up to <strong>25 accounts</strong></li>
+        <li class="hafiz-plan__ok">AES-256-GCM vault encryption</li>
+        <li class="hafiz-plan__ok">PBKDF2-HMAC-SHA256 · 100,000</li>
+        <li class="hafiz-plan__ok">Biometric &amp; auto-lock</li>
+        <li class="hafiz-plan__ok">TOTP codes, generator</li>
+        <li class="hafiz-plan__ok">Duress vault</li>
+        <li class="hafiz-plan__ok">QR transfer &amp; backup</li>
+      </ul>
+      <a class="hafiz-btn hafiz-btn--outline" href="#" aria-disabled="true">Coming to Google Play</a>
+    </article>
+
+    <article class="hafiz-plan hafiz-plan--pro" aria-label="Pro plan">
+      <span class="hafiz-plan__badge mono">RECOMMENDED</span>
+      <div class="hafiz-plan__head">
+        <span class="mono hafiz-plan__tag">PRO</span>
+        <p class="hafiz-plan__price">$20<span class="hafiz-plan__per"> /year</span></p>
+      </div>
+      <ul class="hafiz-plan__list">
+        <li class="hafiz-plan__ok">Unlimited accounts</li>
+        <li class="hafiz-plan__ok">Everything in Free</li>
+        <li class="hafiz-plan__ok">Priority support</li>
+        <li class="hafiz-plan__ok">Funds the product's future</li>
+      </ul>
+      <a class="hafiz-btn hafiz-btn--primary" href="#" aria-disabled="true" data-i18n="pro_cta">Coming to Google Play</a>
+    </article>
+  </div>
+  <p class="hafiz-pricing__note mono">BILLING IS NOT LIVE YET — NOVU SHIPS HAFIZ ON GOOGLE PLAY SOON.</p>
+</section>
+
+<!-- ═════════════════ 13 · FAQ ═════════════════ -->
+<section class="hafiz-faq" id="faq" aria-labelledby="faq-title">
+  <div class="hafiz-section__head">
+    <p class="hafiz-eyebrow">FAQ</p>
+    <h2 class="hafiz-h2" id="faq-title">Straight answers<span class="hafiz-dot">.</span></h2>
+  </div>
+
+  <div class="hafiz-faq__list">
+    <details class="hafiz-faq__item" open>
+      <summary>Is the vault really offline? How can that be?</summary>
+      <div class="hafiz-faq__body"><p>The Android release declares <strong>no INTERNET permission</strong>. Without that permission Android blocks all network access at the system level, so the app physically cannot send your data — there's no sync server, no account, and no recovery email to abuse.</p></div>
+    </details>
+    <details class="hafiz-faq__item">
+      <summary>What happens if I forget my master password?</summary>
+      <div class="hafiz-faq__body"><p>Nothing can recover it — that's the point of a vault. The key is derived from your password and never stored. The free plan includes encrypted backups and emergency access so you're never one password away from losing everything.</p></div>
+    </details>
+    <details class="hafiz-faq__item">
+      <summary>How does emergency access work without a server?</summary>
+      <div class="hafiz-faq__body"><p>Your trusted contact installs Hafiz and opens your emergency grant. After the waiting period you set, they generate <strong>time-limited codes on their own device</strong>, verify them locally, and read your instructions — all offline, peer-verified, no server involved.</p></div>
+    </details>
+    <details class="hafiz-faq__item">
+      <summary>What exactly does the duress password do?</summary>
+      <div class="hafiz-faq__body"><p>Typing a duress password opens a separate decoy vault containing accounts you choose to place there. It looks like a normal vault to anyone watching — but it was unlocked with its own key and the real vault was never touched.</p></div>
+    </details>
+    <details class="hafiz-faq__item">
+      <summary>Can I move from my current password manager?</summary>
+      <div class="hafiz-faq__body"><p>Yes. Hafiz imports CSV exports from Chrome, Bitwarden, LastPass and KeePass, skipping duplicates. You can also transfer individual accounts between devices with encrypted QR codes.</p></div>
+    </details>
+    <details class="hafiz-faq__item">
+      <summary>What does the free plan limit? Is it a trial?</summary>
+      <div class="hafiz-faq__body"><p>Free is free, not a trial. It's limited to <strong>25 accounts</strong> — a generous ceiling for most people. Hafiz Pro removes the cap entirely for $20/year and funds the product's future.</p></div>
+    </details>
+    <details class="hafiz-faq__item">
+      <summary>Can I keep my vault on more than one device?</summary>
+      <div class="hafiz-faq__body"><p>There is no cloud sync by design. Move accounts with encrypted QR transfer, or restore a full encrypted backup file on another device — hand-carried, never cloud-carried.</p></div>
+    </details>
+  </div>
+</section>
+
+<!-- ═════════════════ 14 · FINAL CTA ═════════════════ -->
+<section class="hafiz-final" aria-labelledby="final-title">
+  <div class="hafiz-final__inner">
+    <p class="hafiz-eyebrow hafiz-eyebrow--center">YOUR KEYS STAY YOURS</p>
+    <h2 class="hafiz-h2 hafiz-h2--center" id="final-title">Ready when you are<span class="hafiz-dot">.</span></h2>
+    <p class="hafiz-lede" data-i18n="final_lede">Hafiz is built, tested, and awaiting its spot on Google Play. Join the waitlist and be first to know.</p>
+    <div class="hafiz-final__cta">
+      <a class="hafiz-btn hafiz-btn--primary hafiz-btn--lg" href="mailto:hey@novu.dev?subject=Hafiz%20Waitlist" data-i18n="final_cta">Join the waitlist</a>
+      <span class="hafiz-final__hint mono">VERSION 1.2.0 · ANDROID</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═════════════════ 15 · FOOTER ═════════════════ -->
+<footer class="hafiz-footer">
+  <div class="hafiz-footer__inner">
+    <div class="hafiz-footer__brand">
+      <img src="assets/img/logo-white.svg" alt="Hafiz" class="hafiz-footer__logo" />
+      <p class="mono hafiz-footer__motto">OFFLINE VAULT · ENCRYPTED EVERYTHING</p>
+    </div>
+    <nav class="hafiz-footer__links" aria-label="Footer">
+      <a href="#vault">Vault</a>
+      <a href="#features">Features</a>
+      <a href="#security">Security</a>
+      <a href="#life">Emergency</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="hafiz-footer__meta mono">
+      <span>HAFIZ · NOVU · MADE IN CAIRO · 2026</span>
+      <span>ENCRYPTED, NOT SHARED.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
